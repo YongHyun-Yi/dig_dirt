@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-
 const SPEED = 100.0
 const JUMP_VELOCITY = -170.0
+var is_dig = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -23,6 +23,16 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED / 2)
+	if is_dig:
+		velocity.x = -SPEED * 10
+		#velocity.x = move_toward(velocity.x, -SPEED * 10, SPEED / 2)
+		is_dig = false
 
 	move_and_slide()
+
+
+func wall_detect(body):
+	is_dig = true
+	body.hp -= 1
+	print("wall")

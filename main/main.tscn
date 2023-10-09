@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dadu7ac4fixhb"]
+[gd_scene load_steps=4 format=3 uid="uid://dadu7ac4fixhb"]
 
 [ext_resource type="PackedScene" uid="uid://svi1hx6ymfwf" path="res://level1/level1.tscn" id="1_3gytn"]
 [ext_resource type="PackedScene" uid="uid://cmxn8qk32wytv" path="res://player/player.tscn" id="2_frolu"]
+[ext_resource type="PackedScene" uid="uid://bvb1nmemcd40x" path="res://level1/dirt.tscn" id="3_fylt1"]
 
 [node name="main" type="Node2D"]
 
@@ -9,3 +10,12 @@
 
 [node name="player" parent="." instance=ExtResource("2_frolu")]
 position = Vector2(48, 197)
+
+[node name="dirt" parent="." instance=ExtResource("3_fylt1")]
+position = Vector2(168, 200)
+
+[node name="dirt2" parent="." instance=ExtResource("3_fylt1")]
+position = Vector2(184, 200)
+
+[node name="dirt3" parent="." instance=ExtResource("3_fylt1")]
+position = Vector2(199, 200)
