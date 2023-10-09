@@ -46,5 +46,5 @@ collision_mask = 2
 position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_lmisl")
 
-[connection signal="body_entered" from="left" to="." method="wall_detect"]
-[connection signal="body_entered" from="right" to="." method="wall_detect"]
+[connection signal="body_entered" from="left" to="." method="wall_detect" binds= ["left"]]
+[connection signal="body_entered" from="right" to="." method="wall_detect" binds= ["right"]]
