@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmxn8qk32wytv"]
+[gd_scene load_steps=7 format=3 uid="uid://cmxn8qk32wytv"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_p1nv6"]
 [ext_resource type="Texture2D" uid="uid://1seik1eaxar" path="res://player/sprite/Character Idle 48x48.png" id="1_s6wno"]
+[ext_resource type="PackedScene" uid="uid://dnn6a472ef3ni" path="res://level1/block_ver_2.tscn" id="2_dab6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1in6"]
 size = Vector2(6, 14)
@@ -15,6 +16,7 @@ size = Vector2(1, 10)
 [node name="player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_p1nv6")
+block_scene = ExtResource("2_dab6t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -49,6 +51,8 @@ shape = SubResource("RectangleShape2D_lmisl")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 editor_draw_drag_margin = true
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="left" to="." method="wall_detect" binds= ["left"]]
 [connection signal="body_entered" from="right" to="." method="wall_detect" binds= ["right"]]

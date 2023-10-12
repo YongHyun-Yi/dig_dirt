@@ -14,4 +14,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("click"):
+		var mouse_pos = get_global_mouse_position()
+		var map_coordi = local_to_map(mouse_pos)
+		var cell = get_cell_tile_data(0, map_coordi)
+		print(cell)
 	pass
+
+func _print(number):
+	print(number)
