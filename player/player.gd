@@ -33,7 +33,7 @@ func _physics_process(delta):
 
 
 func wall_detect(body, dir_name):
-	if body.is_class("TileMap"):
+	if body.is_class("TileMap") and is_on_floor():
 		var tile_map : TileMap = body;
 		var checked_cell = tile_map.local_to_map(get_node(dir_name).global_position)
 		var data = tile_map.get_cell_tile_data(0, checked_cell)
