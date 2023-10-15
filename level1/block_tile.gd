@@ -19,6 +19,6 @@ func _on_body_entered(body):
 	elif body.is_class("TileMap"):
 		var tileMap : TileMap = body
 		var cellPos = tileMap.local_to_map(global_position)
-		tileMap.set_cell(0, cellPos, 0, Vector2i(2, 6))
+		tileMap.set_cell(0, cellPos, 0, Vector2i(2, 0))
 		queue_free()
 		
