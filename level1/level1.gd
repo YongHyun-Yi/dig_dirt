@@ -5,6 +5,7 @@ var array = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Engine.max_fps = 60
 	var map_size : Rect2 = get_used_rect()
 	for i in map_size.size.x:
 		array.append([]);
