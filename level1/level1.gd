@@ -1,6 +1,6 @@
 extends TileMap
 
-
+const TILE_LAYER = 1;
 var array = [];
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +18,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("click"):
 		var mouse_pos = get_global_mouse_position()
 		var map_coordi = local_to_map(mouse_pos)
-		var cell = get_cell_tile_data(0, map_coordi)
+		var cell = get_cell_tile_data(TILE_LAYER, map_coordi)
 		print(cell)
 	pass
 
