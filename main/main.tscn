@@ -9,3 +9,5 @@
 
 [node name="player" parent="." instance=ExtResource("2_frolu")]
 position = Vector2(48, 197)
+
+[connection signal="reveal_fog" from="player" to="level1" method="reveal_fog"]

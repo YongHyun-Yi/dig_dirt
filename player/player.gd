@@ -6,11 +6,15 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -170.0
 var is_dig = false
 
+signal reveal_fog(reveal_pos : Vector2)
+
 @export var block_scene : PackedScene
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	emit_signal("reveal_fog", global_position)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -20,6 +24,11 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+	
+	if Input.is_action_just_pressed("ui_down"):
+		set_collision_mask_value(3, false)
+	elif Input.is_action_just_released("ui_down"):
+		set_collision_mask_value(3, true)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -46,11 +55,12 @@ func wall_detect(body, dir_name):
 		var block_hp = data.get_custom_data("hp")
 		if block_hp == 0:
 			return
-		tile_map.array[checked_cell.x][checked_cell.y] += 1
+		tile_map.block_hp[checked_cell.x][checked_cell.y] += 1
 		is_dig = true
-		if tile_map.array[checked_cell.x][checked_cell.y] >= block_hp:
+		if tile_map.block_hp[checked_cell.x][checked_cell.y] >= block_hp:
 			tile_map.set_cells_terrain_connect(TILE_LAYER, [checked_cell], 0, -1, false)
-			tile_map.array[checked_cell.x][checked_cell.y] = 0
+			emit_signal("reveal_fog", get_node(dir_name).global_position)
+			tile_map.block_hp[checked_cell.x][checked_cell.y] = 0
 			var upCellPos = checked_cell + Vector2i.UP;
 			var cell = tile_map.get_cell_tile_data(TILE_LAYER, upCellPos)
 			if cell == null:
@@ -64,7 +74,6 @@ func wall_detect(body, dir_name):
 				var pos = tile_map.map_to_local(upCellPos)
 				var block = block_scene.instantiate()
 				block.global_position = pos
-				block.my_signal.connect(tile_map._print)
 				get_node("/root/main").add_child(block)
 				
 				await get_tree().create_timer(1).timeout
