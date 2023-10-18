@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const TILE_LAYER = 1;
 const SPEED = 100.0
-const JUMP_VELOCITY = -170.0
+const JUMP_VELOCITY = -150.0
 var is_dig = false
 
 signal reveal_fog(reveal_pos : Vector2)
