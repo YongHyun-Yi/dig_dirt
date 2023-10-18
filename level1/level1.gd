@@ -3,6 +3,8 @@ extends TileMap
 const TILE_LAYER = 1
 const FOG_LAYER = 2
 const FOG_TILE = Vector2i.ZERO
+const TILE_MAP = 0
+const TILE_MAP_FOG = 1
 var block_hp = [];
 
 func _enter_tree():
@@ -31,7 +33,7 @@ func fill_fog():
     var margin = 20
     for x in range(map_size.position.x - margin, map_size.end.x + margin):
         for y in range(map_size.position.y - margin, map_size.end.y + margin):
-            set_cells_terrain_connect(FOG_LAYER, [Vector2i(x, y)], 1, 0)
+            set_cells_terrain_connect(FOG_LAYER, [Vector2i(x, y)], TILE_MAP, TILE_MAP_FOG)
 
 func get_surrounding_9cells(pos : Vector2i):
     var cells = []
@@ -57,4 +59,4 @@ func reveal_fog(global_pos : Vector2):
             fog.append_array(get_surrounding_9cells(pos))
         if fog_tile != null:
             if tile == null or tile.get_custom_data("is_wall") == false:
-                set_cells_terrain_connect(FOG_LAYER, [pos], 1, -1, false)
+                set_cells_terrain_connect(FOG_LAYER, [pos], TILE_MAP, -1, false)
