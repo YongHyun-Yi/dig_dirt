@@ -31,9 +31,11 @@ func _process(delta):
 func fill_fog():
     var map_size : Rect2 = get_used_rect()
     var margin = 20
+    var tiles = []
     for x in range(map_size.position.x - margin, map_size.end.x + margin):
         for y in range(map_size.position.y - margin, map_size.end.y + margin):
-            set_cells_terrain_connect(FOG_LAYER, [Vector2i(x, y)], TILE_MAP, TILE_MAP_FOG)
+            tiles.append(Vector2i(x, y))
+    set_cells_terrain_connect(FOG_LAYER, tiles, TILE_MAP, TILE_MAP_FOG)
 
 func get_surrounding_9cells(pos : Vector2i):
     var cells = []
