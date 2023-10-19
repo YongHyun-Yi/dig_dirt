@@ -48,10 +48,12 @@ func get_surrounding_9cells(pos : Vector2i):
 	cells.append(pos + Vector2i(-1, 0))
 	cells.append(pos + Vector2i(0, 1))
 	cells.append(pos + Vector2i(0, -1))
+	"""
 	cells.append(pos + Vector2i(1, 1))
 	cells.append(pos + Vector2i(-1, 1))
 	cells.append(pos + Vector2i(1, -1))
 	cells.append(pos + Vector2i(-1, -1))
+	"""
 	return cells
 
 func reveal_fog(tile_pos: Vector2i):

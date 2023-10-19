@@ -9,6 +9,6 @@
 player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_frolu")]
-position = Vector2(48, 197)
+position = Vector2(217, 136)
 
 [connection signal="player_dead" from="player" to="level1" method="_on_player_player_dead"]

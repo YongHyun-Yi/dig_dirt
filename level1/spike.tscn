@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://level1/spike.gd" id="1_c4ldv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxopb"]
-size = Vector2(16, 15)
+size = Vector2(10, 12)
 
 [node name="Node2D" type="Area2D"]
 collision_layer = 0
@@ -16,7 +16,7 @@ region_enabled = true
 region_rect = Rect2(48, 0, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_cxopb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
