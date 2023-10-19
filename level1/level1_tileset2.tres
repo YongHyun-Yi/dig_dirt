@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://6pqacmbh5fqa"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://6pqacmbh5fqa"]
 
 [ext_resource type="Texture2D" uid="uid://5uh81st411gb" path="res://level1/tiles.png" id="1_mdmj8"]
 [ext_resource type="Texture2D" uid="uid://dp1ciorv8n0lq" path="res://level1/terrain.png" id="2_221io"]
-[ext_resource type="PackedScene" path="res://level1/block_tile.tscn" id="3_50bek"]
+[ext_resource type="PackedScene" uid="uid://blpcc5gnn3c2k" path="res://level1/block_tile.tscn" id="3_50bek"]
 [ext_resource type="PackedScene" uid="uid://dnn6a472ef3ni" path="res://level1/rock.tscn" id="4_uwy2o"]
 [ext_resource type="PackedScene" uid="uid://ccjs415ynaq5p" path="res://level1/spike.tscn" id="5_g84lr"]
+[ext_resource type="PackedScene" uid="uid://doegx3yoyqjii" path="res://level1/Exit.tscn" id="5_qqt8g"]
 [ext_resource type="PackedScene" uid="uid://euh4vjr6g3r3" path="res://level1/lader.tscn" id="6_wihmn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8hqd"]
@@ -1728,6 +1729,7 @@ texture = ExtResource("2_221io")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_i3qy3"]
 scenes/1/scene = ExtResource("3_50bek")
 scenes/2/scene = ExtResource("4_uwy2o")
+scenes/3/scene = ExtResource("5_qqt8g")
 scenes/5/scene = ExtResource("5_g84lr")
 scenes/6/scene = ExtResource("6_wihmn")
 

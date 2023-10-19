@@ -97,3 +97,12 @@ func damage_block(tile: Vector2i, power: int) -> bool:
 		try_drop_tile(up_cell_pos)
 
 	return true
+
+
+func _on_player_player_dead():
+	get_tree().reload_current_scene()
+
+func game_clear(body):
+	print("Clear~!")
+	get_tree().reload_current_scene()
+

@@ -5,6 +5,9 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -150.0
 var is_dig = false
+var dead = false : set = set_dead
+
+signal player_dead
 
 signal damage_block(pos: Vector2i, power: int)
 
@@ -42,6 +45,8 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+func _set_is_dig(value):
+	is_dig = value
 
 func wall_detect(body, dir_name):
 	if is_on_floor() and body is LevelMap:
@@ -50,8 +55,9 @@ func wall_detect(body, dir_name):
 		is_dig = map.damage_block(checked_cell, 1)
 		#map.damage_block(checked_cell, 1)
 
-func gameover():
-	get_tree().reload_current_scene()
+func set_dead(value: bool):
+	dead = value
+	emit_signal("player_dead")
 
 func knock_back(right):
 	if right > 0:
