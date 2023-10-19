@@ -53,7 +53,7 @@ func wall_detect(body, dir_name):
 func gameover():
 	get_tree().reload_current_scene()
 
-func _knock_back(right):
+func knock_back(right):
 	if right > 0:
 		velocity.x = SPEED * 2;
 	else:

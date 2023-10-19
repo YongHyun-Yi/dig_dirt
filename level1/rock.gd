@@ -26,7 +26,7 @@ func _on_body_entered(body):
 		if angle > 0.95:
 			character.gameover()
 		if angle <= 0.95:
-			character._knock_back(dir.x)
+			character.knock_back(dir.x)
 
 		get_tree()
 	elif body.is_class("TileMap"):
