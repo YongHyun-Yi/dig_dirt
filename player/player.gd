@@ -49,8 +49,8 @@ func wall_detect(body, dir_name):
 		var checked_cell = map.local_to_map(get_node(dir_name).global_position)
 		is_dig = map.damage_block(checked_cell, 1)
 		#map.damage_block(checked_cell, 1)
-				
-func _gameover():
+
+func gameover():
 	get_tree().reload_current_scene()
 
 func _knock_back(right):

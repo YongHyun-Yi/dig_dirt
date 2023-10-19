@@ -14,5 +14,5 @@ func _process(delta):
 func _on_body_entered(body):
 	if body is Player :
 		var player : Player = body
-		player._gameover()
+		player.gameover()
 	pass # Replace with function body.

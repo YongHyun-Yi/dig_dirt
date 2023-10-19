@@ -24,7 +24,7 @@ func _on_body_entered(body):
 		var dir = (character.global_position - global_position).normalized()
 		var angle = dir.dot(Vector2.DOWN)
 		if angle > 0.95:
-			character._gameover()
+			character.gameover()
 		if angle <= 0.95:
 			character._knock_back(dir.x)
 
