@@ -23,7 +23,6 @@ func _physics_process(delta):
 	pass
 
 func _on_body_entered(body):
-	print(body.get_class())
 	if body.is_class("CharacterBody2D"):
 		var character : Player = body
 		var dir = (character.global_position - global_position).normalized()

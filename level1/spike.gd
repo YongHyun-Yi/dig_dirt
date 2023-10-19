@@ -13,7 +13,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player :
-		print("entered")
 		var player : Player = body
 		player._gameover()
 	pass # Replace with function body.

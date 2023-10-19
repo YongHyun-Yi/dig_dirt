@@ -14,9 +14,8 @@ func _physics_process(delta):
 	pass
 
 func _on_body_entered(body):
-	print(body.get_class())
 	if body.is_class("CharacterBody2D"):
-		print("CharacterBody2D")
+		pass
 	elif body.is_class("TileMap"):
 		var tileMap : TileMap = body
 		var cellPos = tileMap.local_to_map(global_position)
