@@ -47,6 +47,7 @@ position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_lmisl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 editor_draw_drag_margin = true
 
