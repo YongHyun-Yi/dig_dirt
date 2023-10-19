@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmxn8qk32wytv"]
+[gd_scene load_steps=7 format=3 uid="uid://cmxn8qk32wytv"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_p1nv6"]
 [ext_resource type="Texture2D" uid="uid://1seik1eaxar" path="res://player/sprite/Character Idle 48x48.png" id="1_s6wno"]
@@ -11,6 +11,9 @@ size = Vector2(1, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmisl"]
 size = Vector2(1, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3bjm"]
+size = Vector2(6, 1)
 
 [node name="player" type="CharacterBody2D"]
 collision_mask = 6
@@ -46,6 +49,15 @@ collision_mask = 2
 position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_lmisl")
 
+[node name="up" type="Area2D" parent="."]
+position = Vector2(0, -18)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_k3bjm")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 editor_draw_drag_margin = true
@@ -54,3 +66,4 @@ editor_draw_drag_margin = true
 
 [connection signal="body_entered" from="left" to="." method="wall_detect" binds= ["left"]]
 [connection signal="body_entered" from="right" to="." method="wall_detect" binds= ["right"]]
+[connection signal="body_entered" from="up" to="." method="wall_detect" binds= ["up"]]
