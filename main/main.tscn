@@ -10,5 +10,3 @@ player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_frolu")]
 position = Vector2(48, 197)
-
-[connection signal="body_entered" from="level1/Node2D" to="level1/Node2D" method="_on_body_entered" flags=18]

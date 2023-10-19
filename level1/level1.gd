@@ -66,6 +66,21 @@ func reveal_fog(tile_pos: Vector2i):
 			if tile == null or tile.get_custom_data("is_wall") == false:
 				set_cells_terrain_connect(FOG_LAYER, [pos], TILE_MAP, -1, false)
 
+func try_drop_tile(tile_pos: Vector2i):
+	var cell = get_cell_tile_data(TILE_LAYER, tile_pos)
+	if cell == null:
+		return true
+	if cell.get_custom_data("can_drop") == true:
+		var pos = map_to_local(tile_pos)
+		var block = block_scene.instantiate()
+		block.global_position = pos
+		get_node("/root/main").add_child(block)
+		
+		#await get_tree().create_timer(1).timeout
+		erase_cell(TILE_LAYER, tile_pos)
+		var up_cell_pos = tile_pos + Vector2i.UP
+		try_drop_tile(up_cell_pos)
+
 func damage_block(tile: Vector2i, power: int) -> bool:
 	var data = get_cell_tile_data(TILE_LAYER, tile)
 	if data == null:
@@ -78,16 +93,7 @@ func damage_block(tile: Vector2i, power: int) -> bool:
 		set_cells_terrain_connect(TILE_LAYER, [tile], 0, -1, false)
 		reveal_fog(tile)
 		self.block_hp[tile.x][tile.y] = 0
-		var upCellPos = tile + Vector2i.UP;
-		var cell = get_cell_tile_data(TILE_LAYER, upCellPos)
-		if cell == null:
-			return true
-		if cell.get_custom_data("can_drop") == true:
-			var pos = map_to_local(upCellPos)
-			var block = block_scene.instantiate()
-			block.global_position = pos
-			get_node("/root/main").add_child(block)
-			
-			#await get_tree().create_timer(1).timeout
-			erase_cell(TILE_LAYER, upCellPos)
+		var up_cell_pos = tile + Vector2i.UP
+		try_drop_tile(up_cell_pos)
+
 	return true
