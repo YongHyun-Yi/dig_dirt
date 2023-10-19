@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dnn6a472ef3ni"]
 
-[ext_resource type="Texture2D" uid="uid://5uh81st411gb" path="res://level1/tiles.png" id="1_fsyp6"]
-[ext_resource type="Script" path="res://level1/block_ver_2.gd" id="1_gbme7"]
+[ext_resource type="Script" path="res://level1/rock.gd" id="1_uq5u4"]
+[ext_resource type="Texture2D" uid="uid://5uh81st411gb" path="res://level1/tiles.png" id="2_8f3d7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ges8"]
 size = Vector2(14, 15)
@@ -47,10 +47,10 @@ _data = {
 [node name="block_ver2" type="Area2D"]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_gbme7")
+script = ExtResource("1_uq5u4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fsyp6")
+texture = ExtResource("2_8f3d7")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
 

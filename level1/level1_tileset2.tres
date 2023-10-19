@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://5uh81st411gb" path="res://level1/tiles.png" id="1_mdmj8"]
 [ext_resource type="Texture2D" uid="uid://dp1ciorv8n0lq" path="res://level1/terrain.png" id="2_221io"]
-[ext_resource type="PackedScene" uid="uid://cv5tt1kxcmhq0" path="res://level1/block_tile.tscn" id="3_50bek"]
-[ext_resource type="PackedScene" uid="uid://dnn6a472ef3ni" path="res://level1/block_ver_2.tscn" id="4_uwy2o"]
+[ext_resource type="PackedScene" path="res://level1/block_tile.tscn" id="3_50bek"]
+[ext_resource type="PackedScene" uid="uid://dnn6a472ef3ni" path="res://level1/rock.tscn" id="4_uwy2o"]
 [ext_resource type="PackedScene" uid="uid://ccjs415ynaq5p" path="res://level1/spike.tscn" id="5_g84lr"]
 [ext_resource type="PackedScene" uid="uid://euh4vjr6g3r3" path="res://level1/lader.tscn" id="6_wihmn"]
 

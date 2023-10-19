@@ -4,16 +4,12 @@ const TILE_LAYER = 1;
 @export var speed = 100
 var movable = false
 
-signal my_signal
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("RESET")
 	movable = true
 	$CollisionShape2D.disabled = false
-	emit_signal("my_signal", 42)
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

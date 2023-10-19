@@ -1,7 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cv5tt1kxcmhq0"]
+[gd_scene load_steps=4 format=3 uid="uid://blpcc5gnn3c2k"]
 
 [ext_resource type="Texture2D" uid="uid://5uh81st411gb" path="res://level1/tiles.png" id="1_4u5t3"]
-[ext_resource type="Script" path="res://level1/block_tile.gd" id="1_idch5"]
+
+[sub_resource type="GDScript" id="GDScript_dg5so"]
+script/source = "extends Area2D
+
+const TILE_LAYER = 1;
+@export var speed = 100
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	global_position.y += speed * delta
+	pass
+
+func _on_body_entered(body):
+	if body.is_class(\"CharacterBody2D\"):
+		pass
+	elif body.is_class(\"TileMap\"):
+		var tileMap : TileMap = body
+		var cellPos = tileMap.local_to_map(global_position)
+		tileMap.set_cell(TILE_LAYER, cellPos, 0, Vector2i(2, 0))
+		queue_free()
+		
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r1nw"]
 size = Vector2(14, 15)
@@ -9,7 +35,7 @@ size = Vector2(14, 15)
 [node name="block_tile" type="Area2D"]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_idch5")
+script = SubResource("GDScript_dg5so")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4u5t3")
